@@ -13,30 +13,30 @@ No deben tabularse las declaraciones de variables, parámetros, asignación o co
 1. Declaración de Variables
 
 No permitida:
-
+```
 SalesTable          salesTable;
 CustInvoiceJour     custInvoiceJour;
-
+```
 Permitida:
-
+```
 SalesTable salesTable;
 CustInvoiceJour custInvoiceJour;
-
+```
 2. Asignación de valores
 
 No Permitidas:
-
+```
 SalesTable.AccountNum       = custTable.AcccountNum;
 SalesTable.SalesResponsible = custTable.SalesResponsible;
 
 SalesTable.AccountNum =         custTable.AcccountNum;
 SalesTable.SalesResponsible =   custTable.SalesResponsible;
-
+```
 Permitidas:
-
+```
 SalesTable.AccountNum = custTable.AcccountNum;
 SalesTable.SalesResponsible = custTable.SalesResponsible;
-
+```
 3. Evaluación de expresiones
 
 No Permitida:
