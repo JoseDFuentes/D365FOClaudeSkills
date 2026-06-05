@@ -4,7 +4,7 @@ description: Describe cómo realizar las validaciones de condiciones de tal form
 ---
 
 Cuando se generen las funciones de validación se deben evitar los siguientes patrones:
-
+```
 public void validateContract(SalesContract _contract)
 {
     if (strlen(_contract.parmCustAccount) == 0)
@@ -17,12 +17,12 @@ public void validateContract(SalesContract _contract)
         throw error("@LBL:CurrencyCodeMissing");
     }
 }
-
+```
 En su lugar se debe utilizar 1 de los dos patrones siguientes:
 
 Si el proceso forma parte de un proceso de la aplicación en Dynamics utilizar una función booleana que evalue todas las condiciones, no deben enviar error, únicamente advertir y finalmente devolver el resultado de las validaciones
 
-
+```
 public boolean validateContract(SalesContract _contract)
 {
     boolean ret = true;
@@ -41,19 +41,19 @@ public boolean validateContract(SalesContract _contract)
 
     return ret;
 }
-
+```
 para que en el bloque de código se pueda usar algo similar a:
-
+```
 boolean result = this.validateContract(contract);
 
 if (result)
 {
     return;
 }
-
+```
 Si el proceso forma parte de un proceso de integración que necesite retornar mensajes serializados, utilizar una función que devuelva un contenedor, que evalue todas las condiciones, no deben enviar error, únicamente advertir y finalmente devolver el contenedor con el resultado de las validaciones y los mensajes de las validaciones no satisfechas. Siendo el resultado booleano el primer elemento del contenedor.
 
-
+```
 public container validateContract(SalesContract _contract)
 {
     boolean ret = true;
@@ -73,9 +73,9 @@ public container validateContract(SalesContract _contract)
 
     return [ret, msgs];
 }
-
+```
 para que en el bloque de código se pueda usar algo similar a:
-
+```
 boolean result;
 List msgs;
 
@@ -83,4 +83,4 @@ List msgs;
 
 result.parmResult(result);
 result.parmMessages(msgs);
-
+```

@@ -88,7 +88,7 @@ En versiones anteriores de AX era usual utilizar un dangling semicolon o punto y
 En operaciones con Listas o Mapas no utilizar el objeto ListIterator o MapIterator respectivamente para iterar Listas, en su lugar utilizar ListEnumerator y MapEnumerator
 
 Esto es debido a que el Iterator requiere verificación, recuperación y movimiento en 3 instrucciones distintas, corriendo el riesgo que en revisiones se omita o se borre la instrucción next()
-
+```
 while(Iterator.more())
 {
     var value = iterator.value();
@@ -96,15 +96,14 @@ while(Iterator.more())
     iterator.next();
 
 }
-
+```
 Mientras que el enumerator solo requiere 2, verificación y movimiento en uno solo paso y recuperación
-
+```
 while (enumerator.moveNext())
 {
     var value = enumerator.current();
 }
-
-
+```
 
 ## Declaración de variables 
 
